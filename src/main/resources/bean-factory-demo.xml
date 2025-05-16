@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="student" class="com.example.Spring.beanFactoryTut.Student">
+        <constructor-arg name="name" value="Abhijeet"/>
+        <constructor-arg name="age" value="21"/>
+    </bean>
+    <bean id="toyotaengine" class="com.example.Spring.dependencyInjection.Toyota"/>
+    <bean id="vehicle" class="com.example.Spring.dependencyInjection.Vehicle">
+
+        <property name="engine" ref="toyotaengine"/>
+    </bean>
+    <!-- Company implements Brand -->
+    <bean id="companyBean" class="com.example.Spring.dependencyInjection.Company">
+        <property name="modelName" value="V27 Pro"/>
+        <property name="price" value="300000"/>
+    </bean>
+
+    <!-- Mobile Parts Bean -->
+    <bean id="mobilePartsBean" class="com.example.Spring.dependencyInjection.MobileParts">
+        <property name="camera" value="108MP"/>
+        <property name="processor" value="Snapdragon 8 Gen 2"/>
+        <property name="sterio" value="true"/>
+    </bean>
+
+    <!-- Constructor-based DI -->
+    <bean id="mobileCDI" class="com.example.Spring.dependencyInjection.Mobile">
+        <constructor-arg ref="companyBean"/>
+        <constructor-arg ref="mobilePartsBean"/>
+    </bean>
+
+    <!-- Setter-based DI -->
+    <bean id="mobileSDI" class="com.example.Spring.dependencyInjection.Mobile">
+        <property name="brand" ref="companyBean"/>
+        <property name="mobileParts" ref="mobilePartsBean"/>
+    </bean>
+
+</beans>
