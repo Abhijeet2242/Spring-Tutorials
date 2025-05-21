@@ -1,21 +1,18 @@
 package com.example.Spring;
 
-import com.example.Spring.applicationContext.AppConfig;
-import com.example.Spring.beanFactoryTut.Student;
-import com.example.Spring.dependencyInjection.Vehicle;
-import org.springframework.beans.factory.BeanFactory;
+import com.example.Spring.Annotations.ContextConfiguration.Configuration.Property;
+//import com.example.Spring.Annotations.DependencyInjection.Autowired.UnsatisfiedDependencyProblem.Invoice;
+//import com.example.Spring.Annotations.DependencyInjection.Autowired.UnsatisfiedDependencyProblem.Iphone;
+import com.example.Spring.Annotations.DependencyInjection.Autowired.UnsatisfiedDependencyProblem.Phone;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import com.example.Spring.Annotations.Autowired.Mobile;
 
 
 @SpringBootApplication
-@Configuration
 @ComponentScan(basePackages = "com.example.Spring")
 public class SpringTutorialsApplication {
 	public static void main(String[] args) {
@@ -41,9 +38,44 @@ public class SpringTutorialsApplication {
 //		Mobile mobile = (Mobile) context.getBean("mobileCDI");
 //		mobile.show();
 
-		ApplicationContext context = new AnnotationConfigApplicationContext(SpringTutorialsApplication.class);
-		Mobile mobile = context.getBean(Mobile.class);
-		mobile.show();
+		//ApplicationContext context = new AnnotationConfigApplicationContext(SpringTutorialsApplication.class);
+
+
+//		Mobile mobile = context.getBean(Mobile.class);
+//		mobile.show();
+		//bean and value
+//		ApplicationContext context = new AnnotationConfigApplicationContext(BeanConfig.class);
+//
+//		MyService myservice = context.getBean(MyService.class);
+//		myservice.myService();
+//		myservice.printService();
+
+		//Lazy.
+//		ApplicationContext context2 = new AnnotationConfigApplicationContext(SpringTutorialsApplication.class);
+//		HeavyService service = context2.getBean(HeavyService.class);
+//		service.doSomething();
+//		// scope -> singleton and prototype
+//		ApplicationContext context = new AnnotationConfigApplicationContext(SpringTutorialsApplication.class);
+//
+//		Book b1 = context.getBean(Book.class);
+//		Book b2 = context.getBean(Book.class);
+//
+//		System.out.println(b1 == b2);
+
+		//this is configuration
+//		ApplicationContext context = new AnnotationConfigApplicationContext(SpringTutorialsApplication.class);
+//
+//		Property property = context.getBean(Property.class);
+//		property.getProperty();
+
+
+		//Run spring Server
+		 ApplicationContext context = SpringApplication.run(SpringTutorialsApplication.class,args);
+
+//		Invoice invoice = context.getBean(Invoice.class);
+//		Iphone iphone = context.getBean(Iphone.class);
+//		iphone.getPhone();
+//		invoice.printPhone();
 
 
 

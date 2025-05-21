@@ -1,8 +1,10 @@
-package com.example.Spring.Annotations.Autowired;
+package com.example.Spring.Annotations.DependencyInjection.Autowired;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component
+@Primary  // using this annotation we dont need to setup @Qualifier . it will inject this bean as the primary
 public class Jio implements Sim{
     @Override
     public void calling() {

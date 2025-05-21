@@ -1,4 +1,4 @@
-package com.example.Spring.Annotations.Autowired;
+package com.example.Spring.Annotations.DependencyInjection.Autowired;
 
 import org.springframework.stereotype.Component;
 
