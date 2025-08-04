@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Objects;
-@Component
+//@Component
 public class DBConnection {
 
     @Autowired(required = false)

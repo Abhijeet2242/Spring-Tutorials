@@ -10,10 +10,12 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 
 @SpringBootApplication
 @ComponentScan(basePackages = "com.example.Spring")
+@EnableAsync
 public class SpringTutorialsApplication {
 	public static void main(String[] args) {
 
