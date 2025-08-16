@@ -19,4 +19,12 @@ public class UserDetailsService {
     public List<UserDetails> getAll() {
        return userDetailsRepository.findAll();
     }
+
+    public UserDetails saveUserUsingOneToOne(UserDetails userDetails) {
+        return userDetailsRepository.save(userDetails);
+    }
+
+    public UserDetails findById(Long id){
+        return userDetailsRepository.findById(id).get();
+    }
 }

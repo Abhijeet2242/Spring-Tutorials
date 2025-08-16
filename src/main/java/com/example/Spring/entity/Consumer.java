@@ -19,13 +19,15 @@ public class Consumer {
     @Id
     private String email;
 
-    @Id
+
     private String name;
+
+    @Id
+    private String mobileNumber;
 
     // here use
     // @EmbeddedId
     //ConsumeDetailsCK consumeDetailCk
-    private String mobileNumber;
 
     public Consumer() {
     }

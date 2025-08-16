@@ -1,5 +1,7 @@
 package com.example.Spring.entity;
 
+import com.example.Spring.dto.UserDetailsDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,12 +13,27 @@ public class UserDetails {
     private String name;
     private String email;
 
+
+    // default it is eagerly loading
+    //make it lazy using fetchTYpe -> then git gives some not found error as jackson don't know about data
+    //at serialization type
+    // solution 1) use @JsonIgnore  2) create DTO
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    //@JsonIgnore
+    private UserAddress userAddress;
+
     public UserDetails() {
     }
 
-    public UserDetails(String name, String email) {
+    public UserDetailsDTO toDTO() {
+        return new UserDetailsDTO(this);
+    }
+
+    public UserDetails(String name, String email, UserAddress userAddress) {
         this.name = name;
         this.email = email;
+        this.userAddress = userAddress;
     }
 
     public Long getId() {
@@ -42,4 +59,7 @@ public class UserDetails {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public UserAddress getUserAddress() { return userAddress; }
+    public void setUserAddress(UserAddress userAddress) { this.userAddress = userAddress; }
 }
