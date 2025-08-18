@@ -1,15 +1,19 @@
 package com.example.Spring.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import jakarta.persistence.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE,
-region = "productDetailsCache")
+region = "productDetailsCache")  // this is used for 2nd level cache
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id"
+)
 public class ProductDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +21,10 @@ public class ProductDetails {
 
     private String pName;
     private String description;
+
+    @OneToOne(mappedBy = "oneToOneBidirectional", fetch = FetchType.EAGER)  // this is for oneto one bidirectional
+    //@JsonBackReference // for preventing infinite loop in get call
+    private OneToOneBidrectional oneToOneBidirectional;
 
     public ProductDetails() {
     }
